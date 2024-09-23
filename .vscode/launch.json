@@ -220,7 +220,7 @@
             "args": [],
             "cwd": "${workspaceFolder}/foundation/Foundation3",
             "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
+           // "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
 
