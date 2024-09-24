@@ -30,7 +30,12 @@ class Program
             }    
         }while(enterNumber != 0);
 
-        //You use double when the number can be a decimal value, rather than just an integer
+        /*You use double when the number can be a decimal value, 
+        rather than just an integer.
+        
+        The ternary operator (? :) is used here: if count > 0, 
+        the average is the sum divided by the number of entries; 
+        otherwise, the average is 0*/
         double average = count > 0 ? (double)sum / count: 0;
 
         Console.WriteLine($"The sum is: {sum}");
