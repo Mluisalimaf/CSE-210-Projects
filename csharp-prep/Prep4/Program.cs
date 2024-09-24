@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         //there are two ways of creating this code:
-        //the first one using lists:
+        //the first one is using lists:
 
         Console.WriteLine("Enter a list of numbers, type 0 when finished.");
         List<int> numbers = new List<int>();
