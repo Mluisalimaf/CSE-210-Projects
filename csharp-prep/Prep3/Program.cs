@@ -9,12 +9,13 @@ class Program
 
         Random randomGenerator = new Random();
         int number = randomGenerator.Next(1, 101);
+        
         int guess = -1;
 
 
         while (guess != number)
         {
-            Console.WriteLine("What is your guess? ");
+            Console.Write("What is your guess? ");
             guess = int.Parse(Console.ReadLine());
 
             if (number > guess)
@@ -31,8 +32,6 @@ class Program
             }
 
         }
-
-
 
     }
 }
