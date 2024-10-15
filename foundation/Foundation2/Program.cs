@@ -27,19 +27,19 @@ class Program
         Order order2 = new Order(customer2, new List<Product>{product2});
         Order order3 = new Order(customer3, new List<Product>{product3});
 
-        Console.WriteLine(order1.GetProductDetails());
-        Console.WriteLine(order1.GetPackingLabel());
-        Console.WriteLine(order1.GetShippingLabel());
+        Console.WriteLine(order1.ProductDetails());
+        Console.WriteLine(order1.PackingLabel());
+        Console.WriteLine(order1.ShippingLabel());
         Console.WriteLine($"Total Price: ${order1.CalculateTotal()}");
 
-        Console.WriteLine(order2.GetProductDetails());
-        Console.WriteLine(order2.GetPackingLabel());
-        Console.WriteLine(order2.GetShippingLabel());
+        Console.WriteLine(order2.ProductDetails());
+        Console.WriteLine(order2.PackingLabel());
+        Console.WriteLine(order2.ShippingLabel());
         Console.WriteLine($"Total Price: ${order2.CalculateTotal()}");
 
-        Console.WriteLine(order3.GetProductDetails());
-        Console.WriteLine(order3.GetPackingLabel());
-        Console.WriteLine(order3.GetShippingLabel());
+        Console.WriteLine(order3.ProductDetails());
+        Console.WriteLine(order3.PackingLabel());
+        Console.WriteLine(order3.ShippingLabel());
         Console.WriteLine($"Total Price: ${order3.CalculateTotal()}");
 
     }

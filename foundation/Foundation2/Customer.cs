@@ -19,7 +19,7 @@ public class Customer
 
     public string GetAddress()// getter - obtain the address
     {
-        return _address.GetFullAddress();
+        return _address.FullAddress();
     }
 
     public bool InUSA() //method that verifies is its in the USA or not (relate to Address class)

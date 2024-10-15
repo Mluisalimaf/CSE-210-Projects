@@ -34,7 +34,7 @@ public class Order
         return total + _shippingCost;
     }
 
-    public string GetPackingLabel() //method that generate the packing label (etiqueta)
+    public string PackingLabel() //method that generate the packing label (etiqueta)
     {
         string packingLabel = "Packing Label:\n";
         foreach (var product in _product)
@@ -44,7 +44,7 @@ public class Order
         return packingLabel;
     }
 
-    public string GetShippingLabel()//method to generate the shipping label
+    public string ShippingLabel()//method to generate the shipping label
     {
         string shippingLabel = "Shipping Label:\n";
         shippingLabel += $"Customer: {_customer.GetName()}\n";
@@ -52,7 +52,7 @@ public class Order
         return shippingLabel;
     }
 
-    public string GetProductDetails()
+    public string ProductDetails()
     {
         string details = $"Products for {_customer.GetName()}:\n";
         foreach (var product in _product)

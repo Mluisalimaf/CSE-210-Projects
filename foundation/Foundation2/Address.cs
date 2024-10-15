@@ -21,7 +21,7 @@ public class Address
         return _country.ToLower() == "usa";
     }
 
-    public string GetFullAddress() //return the address in a string
+    public string FullAddress() //return the address in a string
     {
         return $"{_street}, {_city}, {_state}-{_country}";
     }
