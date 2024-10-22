@@ -8,8 +8,9 @@ public class Listing : Activity
 
     public Listing(string name, string description, List<string> prompts) : base(name, description)
     {
-        _prompts = new List<string>();
-        _count = 0;
+        //_prompts = new List<string>();
+        //_count = 0;
+        _prompts = prompts;
         _random = new Random();
     } 
 
@@ -20,14 +21,15 @@ public class Listing : Activity
         return _prompts[index];
     }
 
-    public override void Run()
+    //public override void Run() 
+    public void Run()
     {
         DisplayFirstMessage();
 
         string prompt = GetRandom();
         Console.WriteLine(prompt); 
 
-        Countdown(5);
+       // Countdown(5);
 
         List<string> userResponses = new List<string>();
         DateTime startTime = DateTime.Now;

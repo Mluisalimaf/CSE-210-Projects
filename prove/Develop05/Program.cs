@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 class Program
 {
-    static async void Main(string[] args)
+    static async Task Main(string[] args) //void
     {
         while (true)
         {
@@ -65,17 +67,39 @@ class Program
                     continue;
             }
 
-            Console.Write("Enter the duration (in seconds): ");
+            /*Console.Write("Enter the duration (in seconds): ");
             if (int.TryParse(Console.ReadLine(), out int duration))
             {
                 activity.SetDuration(duration);
-                activity.Run();
+                await activity.Run();
+            }
+            else
+            {
+                Console.WriteLine("Invalid input");
+            }*/
+
+            Console.Write("Enter the duration (in seconds): ");
+            if (int.TryParse(Console.ReadLine(), out int duration))
+            {
+                activity.Countdown(duration); //SetDuration
+                
+                if (activity is Breathing breathingActivity)
+                {
+                   await Task.Run(() => breathingActivity.Run());
+                }
+                else if (activity is Listing listingActivity)
+                {
+                    await Task.Run(() => listingActivity.Run()); 
+                }
+                else if (activity is Reflect reflectActivity)
+                {
+                    await Task.Run(() => reflectActivity.Run()); 
+                }
             }
             else
             {
                 Console.WriteLine("Invalid input");
             }
-        
         }
     }
 }

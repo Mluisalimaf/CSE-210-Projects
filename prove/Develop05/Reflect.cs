@@ -1,5 +1,5 @@
 using System;
-using System.Runtime.CompilerServices;
+//using System.Runtime.CompilerServices;
 
 public class Reflect : Activity
 {
@@ -12,17 +12,15 @@ public class Reflect : Activity
         _questions = new List<string>();
     }
 
-    public void Run(int duration)
+    public void Run() 
     {
         DisplayFirstMessage();
 
         DisplayPrompt();
 
-        Countdown (5);
-
         DisplayQuestions();
 
-        Countdown(duration);
+        //Countdown();
 
         DisplayFinalMessage();
     }
@@ -52,12 +50,6 @@ public class Reflect : Activity
         foreach (string question in _questions)
         {
             Console.WriteLine(question);
-            Countdown(5);
         }
-    }
-
-    public override void Run()
-    {
-        base.Run();
     }
 }

@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Threading;
 
-public class Activity
+public abstract class Activity
 {
     private string _name;
     private string _description;
@@ -15,11 +17,6 @@ public class Activity
     public void SetDuration(int duration)
     {
         _duration = duration;
-    }
-
-    public int GetDuration()
-    {
-        return _duration;
     }
 
     public void DisplayFirstMessage()
@@ -50,8 +47,10 @@ public class Activity
         animationStrings.Add("_");
         animationStrings.Add("|");
 
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(duration);
+        //DateTime startTime = DateTime.Now;
+        //DateTime endTime = startTime.AddSeconds();
+
+        DateTime endTime = DateTime.Now.AddSeconds(duration);
 
         int i = 0;
 
@@ -70,26 +69,18 @@ public class Activity
             }*/
         }
         
-
         Console.WriteLine("Done");
-        
     }
 
     public void Countdown(int duration)
     {
-        for (int i = 5; i > 0; i--)
+        for (int i = duration; i > 0; i--)
         {
-            Console.Write("5");
+            Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write("\b \b");
+            Console.Write("\b  \b");
         }
-    }
 
-    public virtual void Run()
-    {
-        DisplayFirstMessage();
-        Countdown(_duration);
-        DisplayFinalMessage();
+        Console.WriteLine("0");
     }
-    
 }
