@@ -14,10 +14,10 @@ public abstract class Activity
         _description = description;
     }
 
-    public void SetDuration(int duration)
+    /*public void SetDuration(int duration)
     {
         _duration = duration;
-    }
+    }*/
 
     public void DisplayFirstMessage()
     {
