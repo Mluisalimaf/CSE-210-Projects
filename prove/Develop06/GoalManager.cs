@@ -122,6 +122,8 @@ public class GoalManager
 
     public void SaveGoals()
     {
+        string fileName = "goals.txt";
+
         using (StreamWriter writer = new StreamWriter(fileName))
         {
             // Save the points
@@ -133,48 +135,63 @@ public class GoalManager
                 writer.WriteLine(goal.GetStringRepresentation());
             }
         }
+
+        Console.WriteLine("Goals saved to " + fileName);
     }
 
     public void LoadGoals()
     {
+        string fileName = "goals.txt";
+
         _goals.Clear();
         _score = 0;
 
-        using (StreamReader reader = new StreamReader(fileName))
+        if (File.Exists(fileName))
         {
-            // Read the points
-            string scoreLine = reader.ReadLine();
-            if (scoreLine.StartsWith("Score:"))
+
+            using (StreamReader reader = new StreamReader(fileName))
             {
-                _score = int.Parse(scoreLine.Substring(6));
+                // Read the points
+                string scoreLine = reader.ReadLine();
+                if (scoreLine.StartsWith("Score:"))
+                {
+                    _score = int.Parse(scoreLine.Substring(6));
+                }
+
+                // Read each goal
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split('|');
+                    string goalType = parts[0];
+
+                    if (goalType == "SimpleGoal")
+                    {
+                        var goal = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
+                        goal.IsComplete = bool.Parse(parts[4]);
+                        _goals.Add(goal);
+                    }
+                    else if (goalType == "EternalGoal")
+                    {
+                        var goal = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
+                        _goals.Add(goal);
+                    }
+                    else if (goalType == "ChecklistGoal")
+                    {
+                        var goal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]));
+                        goal.AmountCompleted = int.Parse(parts[6]);
+                        _goals.Add(goal);
+                    }
+                }
             }
 
-            // Read each goal
-            string line;
-            while ((line = reader.ReadLine()) != null)
-            {
-                string[] parts = line.Split('|');
-                string goalType = parts[0];
-
-                if (goalType == "SimpleGoal")
-                {
-                    var goal = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
-                    goal.IsComplete = bool.Parse(parts[4]);
-                    _goals.Add(goal);
-                }
-                else if (goalType == "EternalGoal")
-                {
-                    var goal = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
-                    _goals.Add(goal);
-                }
-                else if (goalType == "ChecklistGoal")
-                {
-                    var goal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]));
-                    goal.AmountCompleted = int.Parse(parts[6]);
-                    _goals.Add(goal);
-                }
-            }
-
+            Console.WriteLine("Goals loaded from " + fileName);
         }
+        else
+        {
+            Console.WriteLine("No saved goals found to load.");
+        }
+
     }
+
 }
