@@ -1,11 +1,11 @@
 using System;
 using System.IO;
 
-public abstract class Goal()
+public abstract class Goal
 {
-    private string _name;
-    private string _description;
-    private int _points;
+    protected string _name;
+    protected string _description;
+    protected int _points;
 
     public Goal(string name, string description, int points)
     {
@@ -15,17 +15,20 @@ public abstract class Goal()
     }
 
     public abstract void RecordEvent();
-    //{}
 
-    public abstract bool IsComplete();
-    //{}
+    public virtual bool IsComplete()
+    {
+        return false;
+    }
 
-    public abstract string GetDetailsString();
-    /*{
-        //return $"{_name} - {_description}";
-    }*/
+    public virtual string GetDetailsString()
+    {
+        return $"{_name} - {_description}";
+    }
 
-    public abstract string GetStringRepresentation();
-    //{}
+    public virtual string GetStringRepresentation()
+    {
+        return $"Goal|{_name}|{_description}|{_points}";
+    }
 
 }

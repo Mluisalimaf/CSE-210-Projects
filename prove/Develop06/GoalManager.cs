@@ -60,7 +60,7 @@ public class GoalManager
 
     public void ListGoalDetails()
     {
-        foreach (GoalManager goal in _goals)
+        foreach (Goal goal in _goals)
         {
             Console.WriteLine(goal.GetDetailsString());
         }
@@ -82,7 +82,7 @@ public class GoalManager
         string description = Console.ReadLine();
 
         Console.Write("Enter the points fot this goal: ");
-        int points = Console.ReadLine();
+        int points = int.Parse(Console.ReadLine());
 
         switch(choice)
         {
@@ -99,10 +99,10 @@ public class GoalManager
                 break;
 
             case "3":
-                Conosle.WriteLine("Enter the target number for the checklist: ");
+                Console.WriteLine("Enter the target number for the checklist: ");
                 int target = int.Parse(Console.ReadLine());
 
-                Conosle.WriteLine("Enter the bonus points for completing the goal: ");
+                Console.WriteLine("Enter the bonus points for completing the goal: ");
                 int bonus = int.Parse(Console.ReadLine());
 
                 ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, target, bonus);
@@ -168,7 +168,7 @@ public class GoalManager
                     if (goalType == "SimpleGoal")
                     {
                         var goal = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
-                        goal.IsComplete = bool.Parse(parts[4]);
+                        goal.isComplete = bool.Parse(parts[4]);
                         _goals.Add(goal);
                     }
                     else if (goalType == "EternalGoal")
@@ -179,7 +179,7 @@ public class GoalManager
                     else if (goalType == "ChecklistGoal")
                     {
                         var goal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]));
-                        goal.AmountCompleted = int.Parse(parts[6]);
+                        goal.amountCompleted = int.Parse(parts[6]);
                         _goals.Add(goal);
                     }
                 }
