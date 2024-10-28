@@ -5,10 +5,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        GoalManager goalmanager = new GoalManager();
-        bool running = true;
+        GoalManager goalManager = new GoalManager();
+        //bool running = true;
+        bool exit = false;
 
-        while (running)
+        //while (running)
+        while (!exit)
         {
             Console.WriteLine("Menu Options: ");
             Console.WriteLine("1- Create New Goal");
@@ -20,7 +22,6 @@ class Program
             Console.Write("Choose an option (1-6): ");
 
             string choice = Console.ReadLine();
-            //Activity activity = null;
 
             switch (choice)
             {
@@ -33,24 +34,28 @@ class Program
                     break;
 
                 case "3":
-                    Console.Write("Enter the name of the file to save your goals: ");
+                    goalManager.SaveGoals();
+                    /*Console.Write("Enter the name of the file to save your goals: ");
                     string saveFile = Console.ReadLine();
                     goalManager.SaveGoals(saveFile);
-                    Console.WriteLine("Goals saved!");
+                    Console.WriteLine("Goals saved!");*/
                     break;
 
                 case "4":
-                    Console.Write("Enter the name of the file to save your goals: ");
+                    goalManager.LoadGoals();
+                    /*Console.Write("Enter the name of the file to save your goals: ");
                     string loadFile = Console.ReadLine();
-                    goalManager.LoadGoals(loadFine);
-                    Console.WriteLine("Goals loaded!");
+                    goalManager.LoadGoals(loadFile);
+                    Console.WriteLine("Goals loaded!");*/
+                    break;
 
                 case "5":
                     goalManager.RecordEvent();
                     break;
 
-                case "2":
-                    running = false;
+                case "6":
+                    exit = true;
+                    //running = false;
                     Console.WriteLine("Exiting...");
                     break;
 
@@ -63,11 +68,11 @@ class Program
         
         
         
-            // Save the goals in a file
+            /*// Save the goals in a file
             goalManager.SaveGoals("goals.txt");
 
             // Load the goals from a file
-            goalManager.LoadGoals("goals.txt");
+            goalManager.LoadGoals("goals.txt");*/
     
         }
     }

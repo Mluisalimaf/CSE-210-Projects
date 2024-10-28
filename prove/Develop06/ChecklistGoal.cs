@@ -17,11 +17,12 @@ public class ChecklistGoal : Goal
     public override void RecordEvent()
     {
         _amountCompleted++;
+        Console.WriteLine($"Checklist goal progress updated: {_amountCompleted}/{_target}");
 
-        if (_amountCompleted>= _target)
+        /*if (_amountCompleted >= _target)
         {
-
-        }
+            Console.WriteLine("Checklist goal completed! Bonus points awarded.");
+        }*/
     }
 
     public override bool IsComplete()
@@ -30,11 +31,14 @@ public class ChecklistGoal : Goal
     }
 
     public override string GetDetailsString()
-    {}
+    {
+        return $"{_name}: {_description}, Points: {_points}, Target: {_target}, Bonus: {_bonus}, Completed: {_amountCompleted}/{_target}";
+
+    }
 
     public override string GetStringRepresentation()
     {
         return $"ChecklistGoal: {_name}, Progress: {_amountCompleted}/{_target}, Bonus: {_bonus}";
-        // return $"ChecklistGoal|{_name}|{_description}|{_points}|{_target}|{_bonus}|{_amountCompleted}";
+       // return $"ChecklistGoal|{_name}|{_description}|{_points}|{_target}|{_bonus}|{_amountCompleted}";
     }
 }
