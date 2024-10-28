@@ -189,7 +189,7 @@ public class GoalManager
         }
         else
         {
-            Console.WriteLine("No saved goals found to load.");
+            Console.WriteLine("No saved goals found.");
         }
 
     }
